@@ -23,7 +23,34 @@ namespace TryIcon
 
         private void BtnTray_Click(object sender, EventArgs e)
         {
+            VisibleChange(false);
+        }
+        private void VisibleChange(bool visible)
+        {
+            this.Visible = visible;
+            this.ntiTray.Visible = !visible;
+        }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            VisibleChange(false);
+        }
+
+        private void NtiTray_DoubleClick(object sender, EventArgs e)
+        {
+            VisibleChange(true);
+        }
+
+        private void 폼보이기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisibleChange(true);
+        }
+
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ntiTray.Visible = false;
+            Application.ExitThread();
         }
     }
 }
